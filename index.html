@@ -295,10 +295,10 @@ lines.push(
     : "Hola, quiero cotizar un servicio de impresión 3D:"
 );
 
-lines.push("");
 lines.push(`Ciudad: ${city}`);
 lines.push(`Entrega: ${delivery}`);
 lines.push(`Color: ${color}`);
+lines.push("");
 
 if (hasCustom) {
   lines.push(`Personalización: ${customText}`);
@@ -333,6 +333,7 @@ el("waBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
   </script>
 </body>
 </html>
+
 
 
 
