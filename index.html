@@ -163,7 +163,7 @@
   target="_blank"
   rel="noopener noreferrer"
   class="btn secondary"
-  style="margin-top:10px"
+  style="margin-top:10px; display:none"
 >
   Pagar con Mercado Pago
 </a>
@@ -293,6 +293,14 @@
       el("subtotal").textContent = subtotal;
       el("customFee").textContent = customFee;
       el("total").textContent = total;
+      // Mostrar u ocultar botón de Mercado Pago
+const mpBtn = el("mpBtn");
+
+if (total > 0) {
+  mpBtn.style.display = "inline-block";
+} else {
+  mpBtn.style.display = "none";
+}
 
       const delivery = el("delivery").value;
       const color = el("color").value;
@@ -347,6 +355,7 @@ el("waBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
   </script>
 </body>
 </html>
+
 
 
 
