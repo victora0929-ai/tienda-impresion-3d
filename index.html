@@ -289,31 +289,35 @@ const p = qp;
 const a = qa;
 const hasItems = (p > 0) || (a > 0);
 
-lines.push(hasItems ? "Hola 👋 quiero confirmar un pedido de impresión 3D:" : "Hola 👋 quiero cotizar impresión 3D:");
+lines.push(
+  hasItems
+    ? "Hola, quiero confirmar un pedido de impresión 3D:"
+    : "Hola, quiero cotizar un servicio de impresión 3D:"
+);
 
-lines.push(""); // espacio
+lines.push("");
+lines.push(`Ciudad: ${city}`);
+lines.push(`Entrega: ${delivery}`);
+lines.push(`Color: ${color}`);
 
-lines.push(`📍 Ciudad: ${city}`);
-lines.push(`🚚 Entrega: ${delivery}`);
-lines.push(`🎨 Color: ${color}`);
+if (hasCustom) {
+  lines.push(`Personalización: ${customText}`);
+}
 
-if (hasCustom) lines.push(`✨ Personalización: "${customText}"`);
-
-lines.push(""); // espacio
-lines.push("🧾 Productos:");
+lines.push("");
+lines.push("Productos:");
 
 if (p > 0) lines.push(`- Porta termo: ${p}`);
-if (a > 0) lines.push(`- Soporte audífonos: ${a}`);
+if (a > 0) lines.push(`- Soporte para audífonos: ${a}`);
 
 if (!hasItems) {
-  lines.push("- Aún no confirmé cantidades");
   lines.push("");
-  lines.push("💬 Quiero información y tiempos de entrega, por favor.");
+  lines.push("Quisiera información y tiempos de entrega, por favor.");
 } else {
   lines.push("");
-  lines.push(`💰 Total estimado: $${total}`);
+  lines.push(`Total estimado: $${total}`);
   lines.push("");
-  lines.push("✅ ¿Me confirmas disponibilidad para esta semana?");
+  lines.push("¿Hay disponibilidad para esta semana?");
 }
 
 const msg = encodeURIComponent(lines.join("\n"));
@@ -329,5 +333,6 @@ el("waBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
   </script>
 </body>
 </html>
+
 
 
