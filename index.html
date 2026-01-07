@@ -152,8 +152,22 @@
           <div class="line"><span>Subtotal</span><strong>$<span id="subtotal">0</span></strong></div>
           <div class="line"><span>Personalización</span><strong>$<span id="customFee">0</span></strong></div>
           <div class="line"><span>Total</span><strong>$<span id="total">0</span></strong></div>
+          
+      <a id="waBtn" class="btn primary" href="#" target="_blank" rel="noopener noreferrer">
+  Enviar pedido por WhatsApp
+</a>
 
-          <a id="waBtn" class="btn primary" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+<a
+  id="mpBtn"
+  href="https://mpago.la/1QjBp4x"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="btn secondary"
+  style="margin-top:10px"
+>
+  Pagar con Mercado Pago
+</a>
+          
           <p class="fine">Al enviar, se abrirá WhatsApp con tu pedido listo. Tú solo confirmas y listo.</p>
         </div>
       </div>
@@ -310,14 +324,14 @@ lines.push("Productos:");
 if (p > 0) lines.push(`- Porta termo: ${p}`);
 if (a > 0) lines.push(`- Soporte para audífonos: ${a}`);
 
-if (!hasItems) {
-  lines.push("");
-  lines.push("Quisiera información y tiempos de entrega, por favor.");
-} else {
+if (hasItems) {
   lines.push("");
   lines.push(`Total estimado: $${total}`);
   lines.push("");
   lines.push("¿Hay disponibilidad para esta semana?");
+} else {
+  lines.push("");
+  lines.push("Aún no seleccioné cantidades. ¿Me das info de modelos/colores y tiempos de entrega?");
 }
 
 const msg = encodeURIComponent(lines.join("\n"));
@@ -333,6 +347,7 @@ el("waBtn").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
   </script>
 </body>
 </html>
+
 
 
 
